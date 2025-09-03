@@ -24,6 +24,10 @@ jobs:
           tags: flask-fitness-app:latest
           load: true  # Loads image into Docker for next steps
 
+      # Check all files in the Docker image
+      - name: List files in Docker image
+        run: docker run --rm flask-fitness-app:latest ls -R /app
+
       # Step 4: Run Pytest tests inside the built Docker image
       - name: Run Pytest in Docker container
         run: |
