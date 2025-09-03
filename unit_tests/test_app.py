@@ -40,7 +40,7 @@ def test_user_registration(client):
 def test_duplicate_registration(client):
     register(client, 'testuser', 'testpass')
     rv = register(client, 'testuser', 'testpass')
-    assert b'Login' in rv.data
+    assert b'Register' in rv.data
 
 
 def test_login_logout(client):
