@@ -31,4 +31,4 @@ jobs:
       # Step 4: Run Pytest tests inside the built Docker image
       - name: Run Pytest in Docker container
         run: |
-          docker run --rm flask-fitness-app:latest pytest tests/ 
+          docker run --rm flask-fitness-app:latest pytest pytests/ 
