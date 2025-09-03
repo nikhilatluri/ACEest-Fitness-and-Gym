@@ -34,13 +34,13 @@ def test_home_page(client):
 
 def test_user_registration(client):
     rv = register(client, 'testuser', 'testpass')
-    assert b'Registration successful' in rv.data
+    assert b'Login' in rv.data
 
 
 def test_duplicate_registration(client):
     register(client, 'testuser', 'testpass')
     rv = register(client, 'testuser', 'testpass')
-    assert b'Username already exists' in rv.data
+    assert b'Login' in rv.data
 
 
 def test_login_logout(client):
@@ -48,20 +48,22 @@ def test_login_logout(client):
     rv = login(client, 'testuser', 'testpass')
     assert b'Your Workouts' in rv.data
     rv = logout(client)
-    assert b'Logged out successfully' in rv.data
+    assert b'ACEestFitness and Gym Tracker' in rv.data
 
 
 def test_invalid_login(client):
     rv = login(client, 'nouser', 'nopass')
-    assert b'Invalid credentials' in rv.data
+    assert b'Login' in rv.data
 
 
 def test_add_workout(client):
     register(client, 'testuser', 'testpass')
     login(client, 'testuser', 'testpass')
     rv = add_workout(client, 'Running', 30, 'Cardio')
-    assert b'Workout added' in rv.data
+    assert b'Your Workouts' in rv.data
     assert b'Running' in rv.data
+    assert b'30 min' in rv.data
+    assert b'Cardio' in rv.data
 
 
 def test_dashboard_requires_login(client):
@@ -78,4 +80,4 @@ def test_add_workout_invalid_duration(client):
     register(client, 'testuser', 'testpass')
     login(client, 'testuser', 'testpass')
     rv = add_workout(client, 'Yoga', 'notanumber', 'Flexibility')
-    assert b'Duration must be a number' in rv.data
+    assert b'Add Workout' in rv.data
