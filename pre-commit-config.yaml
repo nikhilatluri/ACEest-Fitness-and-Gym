@@ -1,8 +1,8 @@
 repos:
   - repo: local
     hooks:
-      - id: unit tests
-        name: Run unit tests
-        entry: unit tests unit tests/
+      - id: unit_tests
+        name: Run unit_tests
+        entry: unit_tests unit_tests/
         language: system
         pass_filenames: false
