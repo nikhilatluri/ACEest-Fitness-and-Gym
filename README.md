@@ -44,14 +44,14 @@ By default, the app runs on http://localhost:5000.
 
 ### With Pytest (outside Docker):
    ```bash
-   pytest pytest/
+   unit tests unit tests/
 ```
      
 
 
 ### With Docker:
    ```bash
-   docker run --rm flask-fitness-app pytest pytest/
+   docker run --rm flask-fitness-app unit tests unit tests/
 ```
 
 
@@ -77,7 +77,7 @@ ACEest-Fitness-and-Gym/
 ├── requirements.txt
 ├── Dockerfile
 ├── .dockerignore
-├── pytest/
+├── unit tests/
 │   ├── conftest.py
 │   └── test_app.py
 └── ..github/
@@ -126,7 +126,7 @@ MarkupSafe==2.1.5
 SQLAlchemy==2.0.43
 typing_extensions==4.7.1
 Werkzeug==2.2.3
-pytest==8.4.1
+unit tests==8.4.1
 pre-commit
 ```
 
@@ -138,7 +138,7 @@ __pycache__/
 *.pyc
 *.pyo
 *.pyd
-pytest/
+unit tests/
 .env
 .git
 ```
@@ -175,7 +175,7 @@ jobs:
       # Step 4: Run Pytest tests inside the built Docker image
       - name: Run Pytest in Docker container
         run: |
-          docker run --rm flask-fitness-app:latest pytest pytest/
+          docker run --rm flask-fitness-app:latest unit tests unit tests/
 ```
 
 

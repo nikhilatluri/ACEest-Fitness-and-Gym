@@ -1,8 +1,8 @@
 repos:
   - repo: local
     hooks:
-      - id: pytest
-        name: Run pytest
-        entry: pytest pytest/
+      - id: unit tests
+        name: Run unit tests
+        entry: unit tests unit tests/
         language: system
         pass_filenames: false
