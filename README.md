@@ -80,7 +80,7 @@ ACEest-Fitness-and-Gym/
 ├── pytest/
 │   ├── conftest.py
 │   └── test_app.py
-└── .github/
+└── ..github/
     └── workflows/
         └── ci-cd.yml
 ```
