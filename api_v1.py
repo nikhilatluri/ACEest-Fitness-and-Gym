@@ -77,4 +77,4 @@ def add_workout():
             return redirect(url_for('api_v1.dashboard'))
         except ValueError:
             flash('Duration must be a number.')
-    return render_template_string(html.add_html)
+    return render_template_string(html_file.add_html)
