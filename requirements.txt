@@ -11,3 +11,5 @@ typing_extensions==4.7.1
 Werkzeug==2.2.3
 pytest==8.4.1
 pre-commit
+matplotlib
+reportlab

@@ -1,14 +1,14 @@
 from flask import Blueprint, render_template_string, request, redirect, url_for, flash
 from flask_login import login_user, login_required, logout_user, current_user
 from controller import db, User, Workout
-import html
+import html_file
 
 api_v1 = Blueprint('api_v1', __name__)
 
 
 @api_v1.route('/')
 def home():
-    return render_template_string(html.home_html)
+    return render_template_string(html_file.home_html)
 
 
 @api_v1.route('/register', methods=['GET', 'POST'])
@@ -24,7 +24,7 @@ def register():
         db.session.commit()
         flash('Registration successful. Please log in.')
         return redirect(url_for('api_v1.login'))
-    return render_template_string(html.register_html)
+    return render_template_string(html_file.register_html)
 
 
 @api_v1.route('/login', methods=['GET', 'POST'])
@@ -38,7 +38,7 @@ def login():
             return redirect(url_for('api_v1.dashboard'))
         else:
             flash('Invalid credentials.')
-    return render_template_string(html.login_html)
+    return render_template_string(html_file.login_html)
 
 
 @api_v1.route('/logout')
@@ -53,7 +53,7 @@ def logout():
 @login_required
 def dashboard():
     workouts = Workout.query.filter_by(user_id=current_user.id).all()
-    return render_template_string(html.dashboard_html, workouts=workouts)
+    return render_template_string(html_file.dashboard_html, workouts=workouts)
 
 
 @api_v1.route('/add', methods=['GET', 'POST'])
